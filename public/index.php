@@ -30,6 +30,8 @@ $router = new Core\Router();
 // Base route
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 
+$router->add('crews.json', ['controller' => 'Home', 'action' => 'crews']);
+
 // Route with parameter
 $router->add('{id:\d+}', ['controller' => 'Home', 'action' => 'indexWithId']);
 

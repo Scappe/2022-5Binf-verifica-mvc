@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use \Core\View;
 use \App\Models\User;
-
+use \App\Models\Crew;
 /**
  * Home controller
  *
@@ -32,6 +32,12 @@ class Home extends \Core\Controller
     public function usersAction() {
         $users = User::getAll();
         View::renderTemplate('Home/users.html',['users' => $users]);
+    }
+
+    public function crewsAction() {
+        $crews = Crew::getAll();
+        echo json_encode($crews);
+       // View::renderTemplate('Home/users.html',['users' => $users]);
     }
 
     public function usersJsonAction() {
