@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP MVC Template</title>
+</head>
+<body>
+    <h1>Crews</h1>
+    <ul>
+        {% for crew in crews %}
+        
+        <h2>{{crew.name}}</h2>
+
+        {% for pirate in crew.pirates %}
+        <li>{{pirate.name}}, {{pirate.age}}</li> <!-- non serve il .age o .name se c'è solo un dato tipo solo il nome oppure solo l età-->
+        {% endfor %}
+
+        {% endfor %}
+    </ul>
+
+    <link rel="stylesheet" href="style.css">
+</body>
+</html>

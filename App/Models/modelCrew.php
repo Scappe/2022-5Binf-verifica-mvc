@@ -5,7 +5,7 @@ namespace App\Models;
 use PDO;
 
 
-class Crew extends \Core\Model
+class modelCrew extends \Core\Model // la classe deve avere lo stesso nome del file!!!!
 {
 
     /**
@@ -22,11 +22,15 @@ class Crew extends \Core\Model
         if ($query->num_rows > 0) {
             while($row = $query->fetch_assoc()) {
                 $crewName = $row["name"];
-                $piratesQuery = $db->query("select pirates.name from pirates join crews on pirates.pirate_id = crews.members  where crews.name ='".$crewName."'");
+                $piratesQuery = $db->query("select pirates.name, pirates.age from pirates join crews on pirates.pirate_id = crews.members  where crews.name ='".$crewName."'");
                 $pirates = array();
                 if($piratesQuery->num_rows > 0){
                     while($pirateRow = $piratesQuery->fetch_assoc()){
-                        array_push($pirates, $pirateRow["name"]);
+                        $eachPirate = array (                       //non serve eahPirate se usi  -> array_push($pirates, $pirateRow["name"],);
+                            "name" => $pirateRow["name"],    
+                            "age" => $pirateRow["age"],
+                        );
+                        array_push($pirates, $eachPirate,); // array_push($pirates, $pirateRow["name"],);
                     }
                 }
                 $crew = array(

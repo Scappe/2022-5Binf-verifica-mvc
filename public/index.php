@@ -27,10 +27,11 @@ $router = new Core\Router();
 
 // Add the routes
 
+$router->add('allcrews', ['controller' => 'MyHome', 'action' => 'mycrews']); //allCrews è parte dell url, dice di eseguire questa root e in questo caso al controller myHome e alla sua azione interna che si chiama myCrews
+
+/*
 // Base route
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-
-$router->add('crews.json', ['controller' => 'Home', 'action' => 'crews']);
 
 // Route with parameter
 $router->add('{id:\d+}', ['controller' => 'Home', 'action' => 'indexWithId']);
@@ -48,7 +49,7 @@ $router->add('users/{id:\d+}.json', ['controller' => 'Home', 'action' => 'usersW
 
 // Compose page client-side with JavaScript
 $router->add('users2', ['controller' => 'Home', 'action' => 'usersJs']);
-
+*/
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);

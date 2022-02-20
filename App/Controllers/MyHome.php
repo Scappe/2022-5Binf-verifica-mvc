@@ -3,21 +3,34 @@
 namespace App\Controllers;
 
 use \Core\View;
-use \App\Models\User;
-use \App\Models\Crew;
+//use \App\Models\User;
+//use \App\Views\Home\crews;
+use \App\Models\modelCrew;
 /**
  * Home controller
  *
  * PHP version 7.0
  */
-class Home extends \Core\Controller
+class MyHome extends \Core\Controller //il nome della classe deve obbligatoriamente essere uguale al nome del file (il controller)
 {
+
+    
 
     /**
      * Show the index page
      *
      * @return void
      */
+
+
+    public function mycrewsAction() { // azione myCrews (il Action è fisso) è stata richiamata dalla root dell index.php
+        $crews = modelCrew::getAll();
+        
+        //echo json_encode($crews);
+        View::renderTemplate('Home/crews.html',['crews' => $crews]);
+    }
+
+    /*
     public function indexAction()
     {
         View::renderTemplate('Home/index.html');
@@ -34,11 +47,7 @@ class Home extends \Core\Controller
         View::renderTemplate('Home/users.html',['users' => $users]);
     }
 
-    public function crewsAction() {
-        $crews = Crew::getAll();
-        echo json_encode($crews);
-       // View::renderTemplate('Home/users.html',['users' => $users]);
-    }
+
 
     public function usersJsonAction() {
         $users = User::getAll();
@@ -59,5 +68,7 @@ class Home extends \Core\Controller
     public function usersJs() {
         View::renderTemplate('Home/users_js.html');
     }
+
+*/
 
 }
